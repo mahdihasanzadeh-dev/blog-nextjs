@@ -1,15 +1,17 @@
+import { Fragment} from 'react'
 import type {NextPage} from 'next'
 import Head from 'next/head'
 
 const PostDetailPage :NextPage =()=> {
     return (
-        <div>
+        <Fragment>
             <Head>
                 <title>All Posts</title>
                 <meta name="description" content="" />
             </Head>
+          
             
-        </div>
+        </Fragment>
     )
 }
 
