@@ -9,14 +9,15 @@ const PostsGrid:React.FC<PostsGridProps> =({posts})=> {
     return (
         <ul className={classes.grid}>
             {posts.map(post=>{
-                const {title,image,excerpt,date,slug} = post
+                const {title,image,excerpt,date,slug,content} = post
                 return <PostItem
                     key={slug}
                     title = {title}
                     image = {image}
                     excerpt = {excerpt}
                     date = {date}
-                    slug = {slug}                 
+                    slug = {slug}        
+                    content={content}         
                 />
             })}
         </ul>

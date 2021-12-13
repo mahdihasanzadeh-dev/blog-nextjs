@@ -3,5 +3,7 @@ export interface PostInterface{
     image:string,
     excerpt:string,
     date:string,
-    slug:string
+    slug:string,
+    content: string,
+    isFeatured?:boolean
 }

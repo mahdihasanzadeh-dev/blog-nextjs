@@ -1,31 +1,45 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-const postsDirectory = path.join(process.cwd(),'posts')
-function getPostData(fileName){
-    const filePath = path.join(postsDirectory,fileName)
-    const fileContent = fs.readFileSync(filePath, 'utf-8')
-    const {data,content} = matter(fileContent)
-    const postSlug = fileName.replace(/\.md$/,'') //removes the file extenstion
-    const postData = {
-        slug : postSlug,
-        ...data,
-        content:content
+import fs from 'fs';
+import path from 'path';
 
-    }
-    return postData
+import matter from 'gray-matter';
+
+const postsDirectory = path.join(process.cwd(), 'posts');
+
+export function getPostsFiles() {
+  return fs.readdirSync(postsDirectory);
 }
-function getAllPost(){
-    const postFiles = fs.readdirSync(postsDirectory)
-    const allPost = postFiles.map(postFile=>{
-        return getPostData(postFile)
-     })
-    const sortedPost = allPost.sort((postA,postB)=>postA.date > postB.date ? -1 : 1);
-    return sortedPost
+
+export function getPostData(postIdentifier) {
+  const postSlug = postIdentifier.replace(/\.md$/, ''); // removes the file extension
+  const filePath = path.join(postsDirectory, `${postSlug}.md`);
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(fileContent);
+
+  const postData = {
+    slug: postSlug,
+    ...data,
+    content,
+  };
+
+  return postData;
 }
-function getFeaturedPosts(){
-    const allPost = getAllPost()
-    const featuredPosts = allPost.filter(post=>post.isFeatured )
-    return featuredPosts
+
+export function getAllPosts() {
+  const postFiles = getPostsFiles();
+
+  const allPosts = postFiles.map(postFile => {
+    return getPostData(postFile);
+  });
+
+  const sortedPosts = allPosts.sort((postA, postB) => postA.date > postB.date ? -1 : 1);
+
+  return sortedPosts;
 }
-export {getAllPost,getFeaturedPosts}
+
+export function getFeaturedPosts() {
+  const allPosts = getAllPosts();
+
+  const featuredPosts = allPosts.filter(post => post.isFeatured);
+
+  return featuredPosts;
+}

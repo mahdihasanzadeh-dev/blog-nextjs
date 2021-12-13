@@ -2,41 +2,14 @@ import { Fragment } from 'react'
 import type { NextPage } from 'next'
 import {FeaturedPosts, Hero} from '../components/homePage'
 import {PostInterface} from '../types'
+import {getFeaturedPosts} from '../helper/PostsUtile'
 import Head from 'next/head'
-const DUMMY_POSTS=[
-  {
-  title:'Getting started with NextJs',
-  image:'getting-started-nextjs.png',
-  excerpt:'Next Js is a the React Framework for production - it make building fullstack React apps and sites a breez and ship with built-in SSR',
-  date:'2020-03-10',
-  slug:'getting-started-with-next-js'
-  },
-  {
-  title:'Getting started with NextJs2',
-  image:'getting-started-nextjs.png',
-  excerpt:'Next Js is a the React Framework for production - it make building fullstack React apps and sites a breez and ship with built-in SSR',
-  date:'2020-03-10',
-  slug:'getting-started-with-next-js2'
-  },
-  {
-  title:'Getting started with NextJs3',
-  image:'getting-started-nextjs.png',
-  excerpt:'Next Js is a the React Framework for production - it make building fullstack React apps and sites a breez and ship with built-in SSR',
-  date:'2020-03-10',
-  slug:'getting-started-with-next-js3'
-  },
-  {
-  title:'Getting started with NextJs4',
-  image:'getting-started-nextjs.png',
-  excerpt:'Next Js is a the React Framework for production - it make building fullstack React apps and sites a breez and ship with built-in SSR',
-  date:'2020-03-10',
-  slug:'getting-started-with-next-js4'
-  },
-]
+
 type HomePageProps ={
   posts:PostInterface []
 }
 const HomePage: NextPage<HomePageProps> = ({posts}) => {
+  console.log(posts)
   return (
     <Fragment>
       <Head>
@@ -45,9 +18,16 @@ const HomePage: NextPage<HomePageProps> = ({posts}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <FeaturedPosts posts={DUMMY_POSTS}/>
+      <FeaturedPosts posts={posts}/>
     </Fragment>
   )
 }
-
+export function getStaticProps(){
+  const featuredPosts = getFeaturedPosts();
+  return {
+    props:{
+      posts:featuredPosts
+    }
+  }
+}
 export default HomePage
