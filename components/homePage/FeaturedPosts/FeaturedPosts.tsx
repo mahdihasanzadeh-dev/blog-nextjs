@@ -1,10 +1,17 @@
 import React from 'react'
+import {PostsGrid} from '../../posts'
+import {PostInterface} from '../../../types'
+import classes from './FeaturedPosts.module.css'
 
-const FeaturedPosts:React.FC =()=> {
+type FeaturedPosts={
+    posts : PostInterface []
+}
+const FeaturedPosts:React.FC<FeaturedPosts> =({posts})=> {
     return (
-        <div>
-            
-        </div>
+        <section className={classes.latest}>
+            <h2>Featured Posts</h2>
+            <PostsGrid posts={posts} />
+        </section>
     )
 }
 
