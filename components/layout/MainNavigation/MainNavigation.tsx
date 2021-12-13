@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
-import Logo from './Logo'
-
+import Logo from '../Logo/Logo'
+import classes from './MainNavigation.module.css'
 const MainNavigation:React.FC =()=> {
     return (
-        <header>
+        <header className={classes.header}>
             <Link href="/">
                 <a>
                     <Logo />
