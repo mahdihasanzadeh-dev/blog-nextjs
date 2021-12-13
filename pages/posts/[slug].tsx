@@ -1,6 +1,7 @@
 import { Fragment} from 'react'
 import type {NextPage} from 'next'
 import Head from 'next/head'
+import { PostContent } from '../../components/posts'
 
 const PostDetailPage :NextPage =()=> {
     return (
@@ -10,7 +11,7 @@ const PostDetailPage :NextPage =()=> {
                 <meta name="description" content="" />
             </Head>
           
-            
+            <PostContent />
         </Fragment>
     )
 }
