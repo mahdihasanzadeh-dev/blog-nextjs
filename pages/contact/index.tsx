@@ -7,8 +7,8 @@ const ContactPage: NextPage = () => {
   return (
     <Fragment>
       <Head>
-        <title>Contact Us</title>
-        <meta name="description" content="Contact us" />
+        <title>Contact Me</title>
+        <meta name="description" content="send me your messages" />
       </Head>
       <ContactForm />
     </Fragment>

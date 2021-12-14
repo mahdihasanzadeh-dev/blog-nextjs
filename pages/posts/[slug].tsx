@@ -12,8 +12,8 @@ const PostDetailPage :NextPage<PostDetailPageProps> =({post})=> {
     return (
         <Fragment>
             <Head>
-                <title>All Posts</title>
-                <meta name="description" content="" />
+                <title>{post.title}</title>
+                <meta name="description" content={post.excerpt} />
             </Head>
           
             <PostContent post={post} />

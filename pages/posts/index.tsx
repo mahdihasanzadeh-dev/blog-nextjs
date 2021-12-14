@@ -12,7 +12,7 @@ const AllPostsPage :NextPage<AllPostsPageProps> =({posts})=> {
         <div>
             <Head>
                 <title>All Posts</title>
-                <meta name="description" content="" />
+                <meta name="description" content="A list of all programing-related tutorials and posts" />
             </Head>
             <AllPosts posts={posts} />
         </div>
