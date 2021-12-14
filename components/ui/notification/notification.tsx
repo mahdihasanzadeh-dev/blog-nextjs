@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import classes from './notification.module.css';
 import {NotificationContext} from '../../../store/notificationContext'
 type NotificationProps = {
