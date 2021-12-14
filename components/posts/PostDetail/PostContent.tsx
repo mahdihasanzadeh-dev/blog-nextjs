@@ -12,7 +12,7 @@ type PostContentProps = {
     post:PostInterface
 }
 const  PostContent:React.FC<PostContentProps> =({post})=> {
-    const {slug, image, title} = post
+    const {slug, image, title, content} = post
     const imagePath = `/images/posts/${slug}/${image}`
     const customRenderers = {
         img(image:any){
@@ -33,9 +33,10 @@ const  PostContent:React.FC<PostContentProps> =({post})=> {
             return (
               <SyntaxHighlighter
                 style={atomDark}
-                language={language}
-                children={children}
-              />
+                language={language}  
+              >
+                  {children}
+            </SyntaxHighlighter>
             );
           },
     }
@@ -43,7 +44,7 @@ const  PostContent:React.FC<PostContentProps> =({post})=> {
         <article className={classes.content}>
             <PostHeader title={title} image={imagePath} />
             <ReactMarkdown components={customRenderers}>
-                {post.content}
+                {content}
             </ReactMarkdown>
             
         </article>
