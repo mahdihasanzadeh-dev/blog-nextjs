@@ -9,7 +9,6 @@ type HomePageProps ={
   posts:PostInterface []
 }
 const HomePage: NextPage<HomePageProps> = ({posts}) => {
-  console.log(posts)
   return (
     <Fragment>
       <Head>
