@@ -11,7 +11,7 @@ const Hero:React.FC =()=> {
                     height={300}
                 />
             </div>
-            <h1>Hi. I'm Mahdi</h1>
+            <h1>Hi. Im Mahdi</h1>
             <p>
                 I blog about web devlopment - especially frontend library and frameworks
                 like React Or NextJs

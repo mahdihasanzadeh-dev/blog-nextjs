@@ -12,7 +12,7 @@ type PostContentProps = {
     post:PostInterface
 }
 const  PostContent:React.FC<PostContentProps> =({post})=> {
-    const {slug, image, title, content} = post
+    const {slug, image, title} = post
     const imagePath = `/images/posts/${slug}/${image}`
     const customRenderers = {
         img(image:any){
@@ -43,7 +43,7 @@ const  PostContent:React.FC<PostContentProps> =({post})=> {
         <article className={classes.content}>
             <PostHeader title={title} image={imagePath} />
             <ReactMarkdown components={customRenderers}>
-                {content}
+                {post.content}
             </ReactMarkdown>
             
         </article>
