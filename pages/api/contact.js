@@ -11,7 +11,8 @@ const handler = async (req,res)=>{
             name,
             message
         }
-        const client = await MongoClient.connect('mongodb+srv://admin:s2Pj3Lj8v2PhrdJ@cluster0.x8a62.mongodb.net/blog?retryWrites=true&w=majority')
+        const connectionString =`mongodb+srv://${process.env.mongodb_usernamme}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.x8a62.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`
+        const client = await MongoClient.connect(connectionString)
         const db = client.db()
         await db.collection('messages').insertOne(newMessage)
         client.close()
